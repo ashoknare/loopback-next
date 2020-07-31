@@ -6,6 +6,7 @@
 import {expect} from '@loopback/testlab';
 import {defineModelClass, Entity, Model, ModelDefinition} from '../../..';
 import {AnyObject} from '../../../common-types';
+import {ModelMetadataHelper} from '../../../decorators';
 
 describe('defineModelClass', () => {
   it('creates a Model class', () => {
@@ -105,5 +106,20 @@ describe('defineModelClass', () => {
     expect(instance.toJSON()).to.deepEqual({id: 1, name: 'a name'});
     // Verify that typedefs allows us to access free-form properties
     expect(instance.name).to.equal('a name');
+  });
+
+  it('should add model definition in decorator metadata', () => {
+    const definition = new ModelDefinition('Book').addProperty('title', {
+      type: 'string',
+    });
+
+    const Book = defineModelClass<typeof Model, {title: string}>(
+      Model,
+      definition,
+    );
+
+    const meta = ModelMetadataHelper.getModelMetadata(Book);
+
+    expect(meta).to.be.instanceOf(ModelDefinition);
   });
 });
