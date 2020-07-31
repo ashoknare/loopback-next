@@ -4,7 +4,7 @@
 
 In `lb4`, we introduce the concept of
 [`repository`](https://loopback.io/doc/en/lb4/Repositories.html). In order to
-implement this new feature `repository`, we are using legacy juggler bridge as a
+implement this new feature `repository`, we are using juggler bridge as a
 (temporary) solution. Each model has two **parallel classes**:
 
 - The class defined by the app developers using decorators and
@@ -30,8 +30,8 @@ Hope this example shows the idea that even they both use the `base model` from
 Juggler, LB4 model doesn't use, or even have access to some fields/entries in
 the Juggler model!
 
-As mentioned before, we are using the legacy juggler bridge as a temporary
-solution. This may change in the future since the Juggler is pretty.. you know,
-legacy. However, it's important to realize how LB4 deals with models.
+As mentioned before, we are using the juggler bridge as a temporary solution.
+This may change in the future since the Juggler is pretty.. you know, legacy.
+However, it's important to realize how LB4 deals with models.
 
 Happy coding :D
